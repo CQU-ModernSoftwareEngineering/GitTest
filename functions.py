@@ -78,7 +78,8 @@ def arcsine(float, str):
                 m = m + 2
                 n = n + 2
                 i = i * n/m
-            res = "%.2f" % res
+            # res = "%.2f" % res
+            # res = float(res)
         else:             # 结果输出采用角度制
             while index < 961337:
                 index = index + 2
@@ -87,7 +88,8 @@ def arcsine(float, str):
                 n = n + 2
                 i = i * n/m
             res = res / 3.14 * 180
-            res = "%.2f" % res
+            # res = "%.2f" % res
+            # res = float(res)
         #
     else:
         res = "None"
