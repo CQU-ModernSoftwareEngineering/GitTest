@@ -54,6 +54,38 @@ def factorial(value):
 #         else:
 #             ret = "None"
 #         return ret
+def arctanx(num, str):
+    tanx = num
+    # 输入判断
+    if(tanx >= -65535 and tanx <= 65535 and str == "弧度"):
+        compute = True
+    if(tanx >= -65535 and tanx <= 65535 and str == "角度"):
+        compute = True
+    else:
+        compute = False
+    # 符合输入规范则进行计算，并返回结果；否则返回"None"
+    if(compute):
+        # 反正切计算
+        ret = 0
+        get = tanx
+        index = 1
+        n = 0
+        while index < 100000:
+            index = index + 1
+            ret = ret+(((-1)**n)/(2*n+1))*(get**(2*n+1))
+            n = n + 1
+        # ret = "%.3f" % ret
+        if (str == "角度"):
+            ret = ret / 3.14 * 180
+        #   print(tanx,"对应的反正切角度值arctanx为：",ret)
+        if (str == "弧度"):
+            ret = ret
+        #   print(tanx,"对应的反正切弧度值arctanx为：",ret)
+    else:
+        ret = "None"
+    return ret
+
+
 def arcsine(float, str):
     # 输入正确性判断
     if(float >= -1 and float <= 1 and str == "弧度"):
@@ -145,7 +177,9 @@ class MyCos(object):
 
 def sin_t(x):
     # pi = 3.14159265
-    return round(math.sin(x*pi/180), 10)
+    pi = 3.14159265
+    cos = MyCos()
+    return round(cos.mycos(x*pi/180), 10)
     # ss = cc()
     # x = int(x)
     # ss = int(ss)
@@ -162,7 +196,7 @@ def cos_t(x):
 
 
 # 计算tan
-def tan_t(x):
+def arcsine_t(x):
     return round(arcsine(x, "角度"), 10)
 
 
@@ -171,9 +205,9 @@ def csc_t(x):
     return round(float(1)/math.sin(x), 10)
 
 
-# 计算sec
-def sec_t(x):
-    return round(float(1)/math.cos(x), 10)
+# 计算arctan
+def arctan_t(x):
+    return round(arctanx(x, "角度"), 10)
 
 
 # 计算lg
