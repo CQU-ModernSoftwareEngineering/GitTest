@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox
 import re
-import math
+# import math
 from functions import *
 root = tk.Tk()
 root.minsize(300, 400)      # 窗口大小300*400
@@ -75,9 +75,9 @@ root.resizable(0, 0)
 # btnequ = tkinter.Button(root, text='=', bg='orange', font=('微软雅黑', 20), fg=('#4F4F4F'), bd=0.5,
 #                         command=lambda x='=': buttonClick(x))
 # btnequ.place(x=225, y=350, width=75, height=50)
-btncsc = tkinter.Button(root, text='csc', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
-                        command=lambda x='csc': buttonClick1(x))
-btncsc.place(x=0, y=85, width=60, height=45)
+# btncsc = tkinter.Button(root, text='csc', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
+#                         command=lambda x='csc': buttonClick1(x))
+# btncsc.place(x=0, y=85, width=60, height=45)
 btnrad = tkinter.Button(root, text='rad', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
                         command=lambda x='rad': buttonClick1(x))
 btnrad.place(x=60, y=85, width=60, height=45)
@@ -87,13 +87,13 @@ btnsin.place(x=120, y=85, width=60, height=45)
 btncos = tkinter.Button(root, text='cos', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
                         command=lambda x='cos': buttonClick1(x))
 btncos.place(x=180, y=85, width=60, height=45)
-btntan = tkinter.Button(root, text='tan', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
-                        command=lambda x='tan': buttonClick1(x))
-btntan.place(x=240, y=85, width=60, height=45)
+btnarcsine = tkinter.Button(root, text='arcsine', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
+                            command=lambda x='arcsine': buttonClick1(x))
+btnarcsine.place(x=240, y=85, width=60, height=45)
 # 第二行
-btnxsec = tkinter.Button(root, text='sec', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
-                         command=lambda x='sec': buttonClick1(x))
-btnxsec.place(x=0, y=130, width=60, height=45)
+btnxarctan = tkinter.Button(root, text='arctan', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
+                            command=lambda x='arctan': buttonClick1(x))
+btnxarctan.place(x=0, y=130, width=60, height=45)
 btnlog = tkinter.Button(root, text='lg', font=('微软雅黑', 20), bg=('#96CDCD'), fg=('#4F4F4F'), bd=0.5,
                         command=lambda x='lg': buttonClick1(x))
 btnlog.place(x=60, y=130, width=60, height=45)
@@ -188,9 +188,9 @@ btnechu1 = tkinter.Button(root, text='÷', font=('微软雅黑', 20), fg=('#4F4F
                           x='÷': buttonClick1(x))
 btnechu1.place(x=240, y=310, width=60, height=45)
 # 第七行
-btnperr = tkinter.Button(root, text='低级', font=('微软雅黑', 20), fg='orange', bd=0.5,
-                         command=lambda x='低级': buttonClick1(x))
-btnperr.place(x=0, y=355, width=60, height=45)
+# btnperr = tkinter.Button(root, text='低级', font=('微软雅黑', 20), fg='orange', bd=0.5,
+#                          command=lambda x='低级': buttonClick1(x))
+# btnperr.place(x=0, y=355, width=60, height=45)
 # btnper.destroy()
 btnper1 = tkinter.Button(root, text='e', font=('微软雅黑', 20), fg=('#4F4F4F'), bd=0.5,
                          command=lambda x='e': buttonClick1(x))
@@ -210,7 +210,7 @@ btnequ1.place(x=240, y=355, width=60, height=45)
 contentVar = tkinter.StringVar(root, '')
 contentEntry = tkinter.Entry(
     root, textvariable=contentVar, state='readonly', font=("Arial", 12))
-contentEntry.place(x=0, y=110, width=300, height=40)
+contentEntry.place(x=0, y=60, width=300, height=40)
 
 
 # def buttonClick(btn):
@@ -321,37 +321,37 @@ def buttonClick1(btn):
                         value = exchange.group()
                         value = str(cos_t(float(value)))
                         content = content.replace(exchange1, value)
-            strtan = r'tan\(\d+\)|tan\(\-?\d+\.\d+\)'
-            if 'tan' in content:
-                m = re.search(strtan, content)
+            strarcsine = r'arcsine\(\d+\)|arcsine\(\-?\d+\.\d+\)'
+            if 'arcsine' in content:
+                m = re.search(strarcsine, content)
                 if m is not None:
                     exchange = m.group()
                     exchange1 = exchange
                     if '.' in exchange:
                         exchange = re.search("\-?\d+\.\d+", exchange)
                         value = exchange.group()
-                        value = str(tan_t(float(value)))
+                        value = str(arcsine_t(float(value)))
                         content = content.replace(exchange1, value)
                     else:
                         exchange = re.search("\-?\d+", exchange)
                         value = exchange.group()
-                        value = str(tan_t(float(value)))
+                        value = str(arcsine_t(float(value)))
                         content = content.replace(exchange1, value)
-            strsec = r'sec\(\-?\d+\)|sec\(\-?\d+\.\d+\)'
-            if 'sec' in content:
-                m = re.search(strsec, content)
+            strarctan = r'arctan\(\-?\d+\)|arctan\(\-?\d+\.\d+\)'
+            if 'arctan' in content:
+                m = re.search(strarctan, content)
                 if m is not None:
                     exchange = m.group()
                     exchange1 = exchange
                     if '.' in exchange:
                         exchange = re.search("\-?\d+\.\d+", exchange)
                         value = exchange.group()
-                        value = str(sec_t(float(value)))
+                        value = str(arctan_t(float(value)))
                         content = content.replace(exchange1, value)
                     else:
                         exchange = re.search("\-?\d+", exchange)
                         value = exchange.group()
-                        value = str(sec_t(float(value)))
+                        value = str(arctan_t(float(value)))
                         content = content.replace(exchange1, value)
             strcsc = r'csc\(\d+\)'
             if 'csc' in content:
@@ -441,10 +441,10 @@ def buttonClick1(btn):
         content += 'sin('
     elif btn == 'cos':
         content += 'cos('
-    elif btn == 'tan':
-        content += 'tan('
-    elif btn == 'sec':
-        content += 'sec('
+    elif btn == 'arcsine':
+        content += 'arcsine('
+    elif btn == 'arctan':
+        content += 'arctan('
     elif btn == 'csc':
         content += 'csc('
     elif btn == 'lg':
