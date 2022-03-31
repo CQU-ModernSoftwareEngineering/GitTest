@@ -1,0 +1,31 @@
+类 MyFun (对象): 
+    def  __init__ ( self , e = 1e-3 ): 
+        self 。e  =  e
+         def  cos ( self , x ): 
+        item  =  1 
+        sum  = 0 
+        i  =  0 
+        f  =  1
+        而 abs ( item )  >  self 。e : 
+            item  =  f  *  (( x ** i )  /  self . fact ( i )) 
+            sum  +=  item 
+            f  =  - f 
+            i  +=  2
+
+        返回 总和
+        def  fact ( self , n ): 
+        result  =  1 
+        for  i  in  range ( 1 , n + 1 ): 
+            result  *=  i
+
+        返回 结果
+
+    def  sin ( self , x ): 
+        n  =  x 
+        sum ,  i  =  0 ,  1
+        而 abs ( n )  >  self 。e : 
+            sum  +=  n 
+            i  +=  1 
+            n  =  - n  *  x  *  x  / ( 2  *  i  - 1 )  /  ( 2  *  i  - 2 )
+
+        返回 总和
