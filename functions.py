@@ -1,16 +1,6 @@
-def reciprocal(value):
-    value = round(float(1) / (float(value)), 10)
+def radian(value):
+    value = value/57.3
     return value
-
-
-# 计算阶乘
-def factorial(value):
-    sum = 1
-    if value == 0 or value == 1:
-        sum = 1
-    for i in range(value):
-        sum += sum * i
-    return sum
 
 
 def arctanx(num, str):
@@ -87,28 +77,6 @@ def arcsine(float, str):
     return res
 
 
-def mycos(x, e=1e-3):
-    item = 1
-    sum = 0
-    i = 0
-    f = 1
-    while abs(item) > e:
-        item = f * ((x**i) / fact(i))
-        sum += item
-        f = -f
-        i += 2
-
-    return sum
-
-
-def fact(n):
-    result = 1
-    for i in range(1, n+1):
-        result *= i
-
-    return result
-
-
 class MyFun (object):
     def __init__(self, e=1e-3):
         self.e = e
@@ -142,31 +110,6 @@ class MyFun (object):
             n = - n * x * x / (2 * i - 1) / (2 * i - 2)
 
         return sum
-
-
-class MyCos(object):
-    def __init__(self, e=1e-3):
-        self.e = e
-
-    def mycos(self, x):
-        item = 1
-        sum = 0
-        i = 0
-        f = 1
-        while abs(item) > self.e:
-            item = f * ((x**i) / fact(i))
-            sum += item
-            f = -f
-            i += 2
-
-        return sum
-
-    def fact(self, n):
-        result = 1
-        for i in range(1, n+1):
-            result *= i
-
-        return result
 
 
 def sin_t(x):

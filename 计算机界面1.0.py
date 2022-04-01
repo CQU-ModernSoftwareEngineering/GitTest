@@ -42,6 +42,7 @@ btnac1.place(x=0, y=175, width=100, height=45)
 btnback1 = tkinter.Button(root, text='←', font=('微软雅黑', 20), fg='#4F4F4F', bd=0.5, command=lambda
                           x='←': buttonClick1(x))
 btnback1.place(x=100, y=175, width=100, height=45)
+
 btnequ1 = tkinter.Button(root, text='=', bg='orange', font=('微软雅黑', 20), fg=('#4F4F4F'), bd=0.5,
                          command=lambda x='=': buttonClick1(x))
 btnequ1.place(x=200, y=175, width=100, height=45)
@@ -115,8 +116,6 @@ def buttonClick1(btn):
                     content = content.replace('÷', '/')
                 elif operat == '×':
                     content = content.replace('×', '*')
-                elif operat == '^':
-                    content = content.replace('^', '**')
             strsin = r'sin\(\d+\)|sin\(\-?\d+\.\d+\)'
             if 'sin' in content:
                 m = re.search(strsin, content)
@@ -186,6 +185,8 @@ def buttonClick1(btn):
         except ZeroDivisionError:
             tk.messagebox.showerror('错误', 'VALUE ERROR')
             return
+    elif btn == 'rad':
+        content = str(radian(float(content)))+'π'
     elif btn == 'π':
         content = 3.1415926535
     elif btn == 'sin':
@@ -202,4 +203,5 @@ def buttonClick1(btn):
     contentVar.set(content)
 
 
+operators = ('÷', '×', '=', '.')
 root.mainloop()
