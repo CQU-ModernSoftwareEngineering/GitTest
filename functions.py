@@ -12,48 +12,7 @@ def factorial(value):
         sum += sum * i
     return sum
 
-# 计算sin
-# def sin(x):
-#     e = 10^(-15)
-#     sum = 0
-#     evl = x
-#     n = 1
-#     while(abs(evl)>e):
-#         sum = sum+evl
-#         a = (-1)**n
-#         b = evl**(2*n+1)
-#         c = factorial((2*n+1))
-#         evl = a*b/c
-#         n +=1
-#
-# print(sin(1))
 
-
-# 计算sin
-# class cc:
-#     def arctan(float, str):
-#         # 输入判断
-#         if(float >= -65535 and float <= 65536):
-#             compute = True
-#         else:
-#             compute = False
-#     # 符合输入规范则进行计算，并返回结果；否则返回"None"
-#         if(compute):
-#             # 反正切计算
-#             ret = 0
-#             get = float
-#             index = 1
-#             n = 0
-#             while index < 10000:
-#                 index = index + 1
-#                 ret = ret+(((-1)**n)/(2*n+1))*(get**(2*n+1))
-#                 n = n + 1
-#             ret = "%.3f" % ret
-#             if (str == "角度"):
-#                 ret = ret / 57.3
-#         else:
-#             ret = "None"
-#         return ret
 def arctanx(num, str):
     tanx = num
     # 输入判断
@@ -150,6 +109,41 @@ def fact(n):
     return result
 
 
+class MyFun (object):
+    def __init__(self, e=1e-3):
+        self.e = e
+
+    def cos(self, x):
+        item = 1
+        sum = 0
+        i = 0
+        f = 1
+        while abs(item) > self.e:
+            item = f * ((x ** i) / self . fact(i))
+            sum += item
+            f = - f
+            i += 2
+
+        return sum
+
+    def fact(self, n):
+        result = 1
+        for i in range(1, n + 1):
+            result *= i
+
+        return result
+
+    def sin(self, x):
+        n = x
+        sum,  i = 0,  1
+        while abs(n) > self .e:
+            sum += n
+            i += 1
+            n = - n * x * x / (2 * i - 1) / (2 * i - 2)
+
+        return sum
+
+
 class MyCos(object):
     def __init__(self, e=1e-3):
         self.e = e
@@ -178,21 +172,17 @@ class MyCos(object):
 def sin_t(x):
     # pi = 3.14159265
     pi = 3.14159265
-    cos = MyCos()
-    return round(cos.mycos(x*pi/180), 10)
-    # ss = cc()
-    # x = int(x)
-    # ss = int(ss)
-    # mm=ss.arctan()
-    # return round(ss.arctan(x), 10)
-
+    cc = MyFun()
+    return round(cc.sin(x*pi/180), 10)
 
 # 计算cos
+
+
 def cos_t(x):
     pi = 3.14159265
-    cos = MyCos()
+    ss = MyFun()
     # 输入待计算数值
-    return round(cos.mycos(x*pi/180), 10)
+    return round(ss.cos(x*pi/180), 10)
 
 
 # 计算tan
@@ -200,22 +190,6 @@ def arcsine_t(x):
     return round(arcsine(x, "角度"), 10)
 
 
-# 计算csc
-def csc_t(x):
-    return round(float(1)/math.sin(x), 10)
-
-
 # 计算arctan
 def arctan_t(x):
     return round(arctanx(x, "角度"), 10)
-
-
-# 计算lg
-def lg_t(x):
-    return round(math.log10(x), 10)
-
-# 计算ln
-
-
-def ln_t(x):
-    return round(math.log(x, math.e), 10)
