@@ -1,16 +1,8 @@
-def reciprocal(value):
-    value = round(float(1) / (float(value)), 10)
-    return value
 
 
-# 计算阶乘
-def factorial(value):
-    sum = 1
-    if value == 0 or value == 1:
-        sum = 1
-    for i in range(value):
-        sum += sum * i
-    return sum
+def radian(value):
+    value = value/57.3
+    return round(value, 10)
 
 
 def arctanx(num, str):
@@ -35,7 +27,7 @@ def arctanx(num, str):
             n = n + 1
         # ret = "%.3f" % ret
         if (str == "角度"):
-            ret = ret / 3.14 * 180
+            ret = ret / 3.1415926735 * 180
         #   print(tanx,"对应的反正切角度值arctanx为：",ret)
         if (str == "弧度"):
             ret = ret
@@ -78,35 +70,13 @@ def arcsine(float, str):
                 m = m + 2
                 n = n + 2
                 i = i * n/m
-            res = res / 3.14 * 180
+            res = res / 3.1415926535 * 180
             # res = "%.2f" % res
             # res = float(res)
         #
     else:
         res = "None"
     return res
-
-
-def mycos(x, e=1e-3):
-    item = 1
-    sum = 0
-    i = 0
-    f = 1
-    while abs(item) > e:
-        item = f * ((x**i) / fact(i))
-        sum += item
-        f = -f
-        i += 2
-
-    return sum
-
-
-def fact(n):
-    result = 1
-    for i in range(1, n+1):
-        result *= i
-
-    return result
 
 
 class MyFun (object):
@@ -144,34 +114,8 @@ class MyFun (object):
         return sum
 
 
-class MyCos(object):
-    def __init__(self, e=1e-3):
-        self.e = e
-
-    def mycos(self, x):
-        item = 1
-        sum = 0
-        i = 0
-        f = 1
-        while abs(item) > self.e:
-            item = f * ((x**i) / fact(i))
-            sum += item
-            f = -f
-            i += 2
-
-        return sum
-
-    def fact(self, n):
-        result = 1
-        for i in range(1, n+1):
-            result *= i
-
-        return result
-
-
 def sin_t(x):
-    # pi = 3.14159265
-    pi = 3.14159265
+    pi = 3.1415926535
     cc = MyFun()
     return round(cc.sin(x*pi/180), 10)
 
@@ -179,9 +123,8 @@ def sin_t(x):
 
 
 def cos_t(x):
-    pi = 3.14159265
+    pi = 3.1415926535
     ss = MyFun()
-    # 输入待计算数值
     return round(ss.cos(x*pi/180), 10)
 
 

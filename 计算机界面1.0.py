@@ -79,7 +79,7 @@ btn31.place(x=200, y=310, width=100, height=45)
 btnpi = tkinter.Button(root, text='π', font=('微软雅黑', 20), fg=('#4F4F4F'), bd=0.5, command=lambda
                        x='π': buttonClick1(x))
 btnpi.place(x=0, y=355, width=100, height=45)
-btnpi.flash()
+# btnpi.flash()
 btn01 = tkinter.Button(root, text='0', font=('微软雅黑', 20), fg=('#4F4F4F'), bd=0.5, command=lambda
                        x='0': buttonClick1(x))
 btn01.place(x=100, y=355, width=100, height=45)
@@ -110,13 +110,6 @@ def buttonClick1(btn):
         content = ''
     elif btn == '=':
         try:
-            for operat in content:
-                if operat == '÷':
-                    content = content.replace('÷', '/')
-                elif operat == '×':
-                    content = content.replace('×', '*')
-                elif operat == '^':
-                    content = content.replace('^', '**')
             strsin = r'sin\(\d+\)|sin\(\-?\d+\.\d+\)'
             if 'sin' in content:
                 m = re.search(strsin, content)
@@ -186,8 +179,15 @@ def buttonClick1(btn):
         except ZeroDivisionError:
             tk.messagebox.showerror('错误', 'VALUE ERROR')
             return
+    elif btn in operators:
+        if content.endswith(operators):
+            tk.messagebox.showerror('错误', 'FORMAT ERROR')
+            return
+        content += btn
+    elif btn == 'rad':
+        content = str(radian(float(content)))+'π'
     elif btn == 'π':
-        content = 3.1415926535
+        content += '3.1415926535'
     elif btn == 'sin':
         content += 'sin('
     elif btn == 'cos':
@@ -202,4 +202,5 @@ def buttonClick1(btn):
     contentVar.set(content)
 
 
+operators = ('=', '.')
 root.mainloop()
